@@ -1,21 +1,3 @@
-# Penetration Testing Career Tracker
-
-This application helps you track and analyze penetration testing job postings as part of your career research. It allows you to:
-
-- Record job listings from various sources
-- Track required skills and qualifications
-- Store job URLs for future reference
-- Analyze trends in job requirements
-
-## Requirements
-- Python 3.x
-- Tkinter (usually comes with Python)
-- SQLite3 (comes with Python)
-
-## Installation
-1. Clone this repository or download the files
-2. Install requirements:
-
 # ScraperJobs
 
 ScraperJobs is an advanced app for job hunting across multiple sites like LinkedIn, Indeed, and Glassdoor. With a sleek UI and support for custom URLs, you can search for jobs on any site efficiently.
