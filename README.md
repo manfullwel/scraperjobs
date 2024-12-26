@@ -10,6 +10,7 @@ Uma API profissional de busca de vagas que integra múltiplas fontes de dados pa
 - Controle de uso da API
 - Suporte a filtros (remoto, localização, etc.)
 - Ordenação por data e salário
+- Chave pública com limite de 5 buscas para usuários Termux
 
 ## Configuração
 
@@ -24,6 +25,13 @@ cd scraperjobs
 2. Instale as dependências:
 ```bash
 pip install -r requirements.txt
+```
+
+3. Configure suas próprias chaves da API no arquivo `.env` para ter acesso ilimitado:
+```ini
+# APIs
+ADZUNA_APP_ID="seu_app_id"
+ADZUNA_API_KEY="sua_api_key"
 ```
 
 ### Android (Termux)
@@ -60,16 +68,13 @@ pip install wheel
 pip install -r requirements.txt
 ```
 
-Nota: Algumas bibliotecas podem precisar de ajustes para funcionar no Android. Em caso de erro na instalação de alguma dependência, você pode tentar:
-```bash
-pip install --no-deps nome_da_biblioteca
-```
+Nota: No Termux, a aplicação usa uma chave pública com limite de 5 buscas por dia por dispositivo. Para acesso ilimitado, configure suas próprias chaves da API no arquivo `.env`.
 
 ## Configuração do Ambiente
 
-1. Configure as variáveis de ambiente no arquivo `.env`:
+1. (Opcional) Configure suas próprias chaves da API no arquivo `.env`:
 ```ini
-# APIs
+# APIs (opcional - remova para usar a chave pública)
 ADZUNA_APP_ID="seu_app_id"
 ADZUNA_API_KEY="sua_api_key"
 
@@ -91,6 +96,23 @@ python main.py
 3. Acesse a interface web:
 - No computador: http://localhost:8000
 - No Termux: http://localhost:8000 ou http://127.0.0.1:8000
+
+## Limites de API
+
+### Chave Pública (Termux)
+- Limite: 5 buscas por dia por dispositivo
+- Não requer configuração
+- Ideal para testes e uso pessoal limitado
+
+### Chave Privada
+- Limite: 100 buscas por dia (configurável)
+- Requer configuração no arquivo `.env`
+- Recomendado para uso profissional
+
+Para verificar seu uso atual:
+```bash
+curl http://localhost:8000/api/usage
+```
 
 ## Desenvolvimento no Termux
 
@@ -171,6 +193,10 @@ python main.py
 ```bash
 tail -f nohup.out
 ```
+
+5. Se exceder o limite de buscas:
+- Aguarde 24 horas para o limite ser resetado, ou
+- Configure suas próprias chaves da API no arquivo `.env`
 
 ## Próximos Passos
 
