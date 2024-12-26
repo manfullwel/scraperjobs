@@ -43,3 +43,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Documentação interna
+docs/INTERNAL_API_SECURITY.md
